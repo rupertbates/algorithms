@@ -1,7 +1,5 @@
 package algorithms;
 
-import java.util.Arrays;
-
 import static java.lang.StrictMath.floor;
 import static java.lang.System.arraycopy;
 
@@ -21,13 +19,16 @@ public class MergeSort2 {
     public int[] mergeSort(int[] a, int n) {
         if(n == 1)
             return a; //This means it is already sorted
-        int middle = (int) floor(a.length / 2);
-        int[] leftHalf = new int[middle];
+
+        int middle = (int) floor(a.length / 2); //get the index of the middle of the array
+
+        int[] leftHalf = new int[middle]; //copy the left half to a new array
         arraycopy(a, 0, leftHalf, 0, middle);
 
-        int[] rightHalf = new int[a.length - middle];
+        int[] rightHalf = new int[a.length - middle]; //copy the right half to a new array
         arraycopy(a, middle, rightHalf, 0, a.length - middle);
 
+        //Call mergesort recursively on the two new arrays and return the merged results
         return merge(mergeSort(leftHalf, middle), mergeSort(rightHalf, a.length - middle));
 
     }
@@ -43,9 +44,12 @@ public class MergeSort2 {
             return b;
         else if (b.length == 0)
             return a;
+
         if (a[0] < b[0]) {
+            //take the head of a and then merge the tail with b
             return concat(a[0], merge(tail(a), b));
         } else {
+            //take the head of b and then merge the tail with a
             return concat(b[0], merge(a, tail(b)));
         }
     }
