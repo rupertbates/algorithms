@@ -46,7 +46,7 @@ public class PhoneNumbers {
         //Add each possibility for the first digit to the list of combinations
         Collections.addAll(combinations, candidates[0]);
 
-        //for each of the remaining digits, combine it's possibilities with
+        //for each of the remaining digits, combine its possibilities with
         //those already in the list of possible combinations
         for (int i = 1; i < candidates.length; i++) {
             String[] candidate = candidates[i];
